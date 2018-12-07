@@ -5,6 +5,8 @@ An application built using React and Firebase.
 ### React:
 React Router, differences between props and state, passing down methods for child components to use. How to use refs and this-binding. 
 ### Firebase:
+Instead of having the menu reset when you refresh the page, we want to keep that state persistent. Firebase is easy to set that up. Uses WebSockets so that we get data in real-time. Keeps Information on the owner of the store as well as the fish that store has in inventory.
+
 
 ### JavaScript:
 Object destructuring, object spread.

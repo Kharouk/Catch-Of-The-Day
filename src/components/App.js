@@ -3,6 +3,7 @@ import Header from "./Header";
 import Order from "./Order";
 import Inventory from "./Inventory";
 import Fish from "./Fish";
+import base from "../base";
 import sampleFishes from "../sample-fishes";
 
 export default class App extends React.Component {
@@ -10,6 +11,15 @@ export default class App extends React.Component {
     fishes: {},
     order: {}
   };
+
+  componentDidMount() {
+    const { params } = this.props.match;
+    // different ref; for firebase
+    this.ref = base.syncState(`${params.storeName}/fishes`, {
+      context: this,
+      state: "fishes"
+    });
+  }
 
   addFish = fish => {
     // the ... is an object spread that makes a copy
