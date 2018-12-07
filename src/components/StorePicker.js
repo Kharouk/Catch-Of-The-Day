@@ -17,8 +17,10 @@ export default class StorePicker extends React.Component {
     // 1. Stop form from submitting
     e.preventDefault();
     // 2. Get Text from that input
-    console.log(this.myInput);
+    const storeName = this.myInput.value.value;
     // 3. Change the page to /store/whatever-user-entered
+    // We can use history.push because ReactRouter passes it down to us
+    this.props.history.push(`/store/${storeName}`);
   }
 
   // Built-in function in React that runs when component loads on page.
