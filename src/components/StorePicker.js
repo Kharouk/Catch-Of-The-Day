@@ -5,8 +5,13 @@ export default class StorePicker extends React.Component {
     return (
       <form className="store-selector">
         <h2>Please Enter a Store</h2>
-        <input type="text" required placeholder="Store Name" />
-        <button type="submit">Visit Store</button>
+        <input type="text" require placeholder="Store Name" />
+        <button type="submit">
+          Visit Store
+          <span role="img" aria-label="fish">
+            🐟
+          </span>
+        </button>
       </form>
     );
   }
