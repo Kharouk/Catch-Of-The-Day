@@ -12,6 +12,7 @@ export default class App extends React.Component {
     order: {}
   };
 
+  // Built-in function in React that runs when component loads on page.
   componentDidMount() {
     const { params } = this.props.match;
     // different ref; for firebase
@@ -19,6 +20,11 @@ export default class App extends React.Component {
       context: this,
       state: "fishes"
     });
+  }
+
+  // So component is not always listening -> prevents memory leaks
+  componentWillUnmount() {
+    base.removeBinding(this.ref);
   }
 
   addFish = fish => {

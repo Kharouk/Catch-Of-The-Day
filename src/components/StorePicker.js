@@ -19,12 +19,9 @@ export default class StorePicker extends React.Component {
     // 2. Get Text from that input
     const storeName = this.myInput.value.value;
     // 3. Change the page to /store/whatever-user-entered
-    // We can use history.push because ReactRouter passes it down to us
     this.props.history.push(`/store/${storeName}`);
+    // We can use history.push because ReactRouter passes it down to us
   }
-
-  // Built-in function in React that runs when component loads on page.
-  componentDidMount() {}
 
   render() {
     return (
