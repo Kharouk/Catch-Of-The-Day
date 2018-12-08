@@ -42,6 +42,15 @@ export default class App extends React.Component {
     base.removeBinding(this.ref);
   }
 
+  updateFish = (key, updatedFish) => {
+    // 1. take a copy of the current state
+    const fishes = { ...this.state.fishes };
+    // 2. Update that state
+    fishes[key] = updatedFish;
+    // 3. set that to state
+    this.setState({ fishes });
+  };
+
   addFish = fish => {
     // the ... is an object spread that makes a copy
     const fishes = { ...this.state.fishes };
@@ -84,6 +93,8 @@ export default class App extends React.Component {
         <Inventory
           addFish={this.addFish}
           loadSampleFishes={this.loadSampleFishes}
+          fishes={this.state.fishes}
+          updateFish={this.updateFish}
         />
       </div>
     );
