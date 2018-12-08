@@ -42,6 +42,15 @@ export default class App extends React.Component {
     base.removeBinding(this.ref);
   }
 
+  addFish = fish => {
+    // the ... is an object spread that makes a copy
+    const fishes = { ...this.state.fishes };
+    // add our new fishes to the fishes variable
+    fishes[`fish${Date.now()}`] = fish;
+    // set the new fishes object to state
+    this.setState({ fishes });
+  };
+
   updateFish = (key, updatedFish) => {
     // 1. take a copy of the current state
     const fishes = { ...this.state.fishes };
@@ -51,13 +60,19 @@ export default class App extends React.Component {
     this.setState({ fishes });
   };
 
-  addFish = fish => {
-    // the ... is an object spread that makes a copy
+  deleteFish = key => {
+    // 1. take a copy of the state
     const fishes = { ...this.state.fishes };
-    // add our new fishes to the fishes variable
-    fishes[`fish${Date.now()}`] = fish;
-    // set the new fishes object to state
+    // 2. update the value for firebase
+    fishes[key] = null;
+    // 3. Update state
     this.setState({ fishes });
+  };
+
+  deleteFishOrder = key => {
+    const order = { ...this.state.order };
+    delete order[key];
+    this.setState({ order });
   };
 
   addToOrder = key => {
@@ -89,12 +104,17 @@ export default class App extends React.Component {
             ))}
           </ul>
         </div>
-        <Order fishes={this.state.fishes} order={this.state.order} />
+        <Order
+          fishes={this.state.fishes}
+          order={this.state.order}
+          deleteFishOrder={this.deleteFishOrder}
+        />
         <Inventory
           addFish={this.addFish}
           loadSampleFishes={this.loadSampleFishes}
           fishes={this.state.fishes}
           updateFish={this.updateFish}
+          deleteFish={this.deleteFish}
         />
       </div>
     );
