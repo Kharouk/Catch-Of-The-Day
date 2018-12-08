@@ -15,11 +15,26 @@ export default class App extends React.Component {
   // Built-in function in React that runs when component loads on page.
   componentDidMount() {
     const { params } = this.props.match;
+    // first reinstate our localstorage
+    const localStorageRef = localStorage.getItem(params.storeName);
+
+    if (localStorageRef) {
+      this.setState({ order: JSON.parse(localStorageRef) });
+    }
     // different ref; for firebase
     this.ref = base.syncState(`${params.storeName}/fishes`, {
       context: this,
       state: "fishes"
     });
+  }
+
+  //
+  componentDidUpdate() {
+    // Saves to local storage, the store name and the fish order
+    localStorage.setItem(
+      this.props.match.params.storeName,
+      JSON.stringify(this.state.order)
+    );
   }
 
   // So component is not always listening -> prevents memory leaks
