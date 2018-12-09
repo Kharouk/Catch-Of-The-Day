@@ -50,6 +50,18 @@
   -webkit-transform: translateY(-100%) scale(3);
           transform: translateY(-100%) scale(3);
 }
+.order-enter {
+  background: #f00;
+  -webkit-transform: translateX(-120%);
+          transform: translateX(-120%);
+  -webkit-transition: 5s;
+  transition: 5s;
+}
+.order-enter.order-enter-active {
+  background: #ff0;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
 @font-face {
   font-family: "haymakerregular";
   src: url("./fonts/haymaker-webfont.eot");
