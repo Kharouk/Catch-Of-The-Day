@@ -16,7 +16,7 @@ export default class Order extends React.Component {
     if (!fish) return null;
     if (!isAvailable) {
       return (
-        <CSSTransition classNames="order" key={key} timeout={500}>
+        <CSSTransition {...transitionOptions}>
           <li key={key}>
             Sorry {fish ? fish.name : "fish"} is no longer available.
             <button onClick={() => this.props.deleteFishOrder(key)}>
@@ -31,7 +31,7 @@ export default class Order extends React.Component {
         <li key={key}>
           <span>
             <TransitionGroup component="span" className="count">
-              <CSSTransition {...transitionOptions}>
+              <CSSTransition classNames="count" key={count} timeout={500}>
                 <span>{count}</span>
               </CSSTransition>
             </TransitionGroup>
