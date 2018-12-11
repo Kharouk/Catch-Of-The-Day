@@ -7,7 +7,11 @@ export default class Order extends React.Component {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
     const isAvailable = fish && fish.status === "available";
-
+    const transitionOptions = {
+      classNames: "order",
+      key,
+      timeout: 500
+    };
     // Make sure the fish is first loaded before we continue to display:
     if (!fish) return null;
     if (!isAvailable) {
@@ -23,11 +27,11 @@ export default class Order extends React.Component {
       );
     }
     return (
-      <CSSTransition classNames="order" key={key} timeout={500}>
+      <CSSTransition {...transitionOptions}>
         <li key={key}>
           <span>
             <TransitionGroup component="span" className="count">
-              <CSSTransition classNames="count" key={count} timeout={5000}>
+              <CSSTransition {...transitionOptions}>
                 <span>{count}</span>
               </CSSTransition>
             </TransitionGroup>
