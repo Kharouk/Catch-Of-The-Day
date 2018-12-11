@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { getFunName } from "../helpers";
 
 export default class StorePicker extends React.Component {
@@ -8,6 +9,10 @@ export default class StorePicker extends React.Component {
     // Allows us to reference 'this' inside our created method
     this.goToStore = this.goToStore.bind(this);
   }
+
+  static propTypes = {
+    history: PropTypes.object
+  };
 
   // Creates a reference we can save dom info to, and then pull data from:
   myInput = React.createRef();
