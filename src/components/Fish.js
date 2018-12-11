@@ -9,8 +9,7 @@ export default class Fish extends React.Component {
       image: PropTypes.string,
       name: PropTypes.string,
       desc: PropTypes.string,
-      status: PropTypes.string,
-      price: PropTypes.number
+      status: PropTypes.string
     }),
     addToOrder: PropTypes.func
   };

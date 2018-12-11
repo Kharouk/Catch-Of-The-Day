@@ -20,6 +20,14 @@ export default class Inventory extends React.Component {
     storeName: PropTypes.string
   };
 
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.authHandler({ user });
+      }
+    });
+  }
+
   authHandler = async authData => {
     // 1. look up the current store in the FB database
     const store = await base.fetch(this.props.storeName, { context: this });
