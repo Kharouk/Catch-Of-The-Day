@@ -12,11 +12,7 @@ export default class Order extends React.Component {
     if (!fish) return null;
     if (!isAvailable) {
       return (
-        <CSSTransition
-          classNames="order"
-          key={key}
-          timeout={{ enter: 250, exit: 250 }}
-        >
+        <CSSTransition classNames="order" key={key} timeout={500}>
           <li key={key}>
             Sorry {fish ? fish.name : "fish"} is no longer available.
             <button onClick={() => this.props.deleteFishOrder(key)}>
@@ -27,17 +23,20 @@ export default class Order extends React.Component {
       );
     }
     return (
-      <CSSTransition
-        classNames="order"
-        key={key}
-        timeout={{ enter: 250, exit: 250 }}
-      >
+      <CSSTransition classNames="order" key={key} timeout={500}>
         <li key={key}>
-          {count} lbs {fish.name}
-          {formatPrice(count * fish.price)}
-          <button onClick={() => this.props.deleteFishOrder(key)}>
-            &times;
-          </button>
+          <span>
+            <TransitionGroup component="span" className="count">
+              <CSSTransition classNames="count" key={count} timeout={5000}>
+                <span>{count}</span>
+              </CSSTransition>
+            </TransitionGroup>
+            lbs {fish.name}
+            {formatPrice(count * fish.price)}
+            <button onClick={() => this.props.deleteFishOrder(key)}>
+              &times;
+            </button>
+          </span>
         </li>
       </CSSTransition>
     );
@@ -65,7 +64,6 @@ export default class Order extends React.Component {
           Total:
           <strong> {formatPrice(total)}</strong>
         </div>
-        <ul />
       </div>
     );
   }
