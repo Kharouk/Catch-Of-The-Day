@@ -4,7 +4,7 @@ import Header from "./Header";
 import Order from "./Order";
 import Inventory from "./Inventory";
 import Fish from "./Fish";
-import base from "../base";
+import base from "./base";
 import sampleFishes from "../sample-fishes";
 
 export default class App extends React.Component {
