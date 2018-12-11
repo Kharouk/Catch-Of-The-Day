@@ -1,5 +1,9 @@
 # Catch of the Day
 An application built using React and Firebase.
+### Deployment:
+Now: https://catchmeifyoucan.now.sh/
+
+Netlify, Now, and Apache Server.
 
 ## What I've Learned:
 ### React:
@@ -19,5 +23,3 @@ Facebook, github, twitter
 Stylus, animation. 
 ### JavaScript:
 Object destructuring, object spread.
-### Deployment:
-Netlify, Now, and Apache Server.
