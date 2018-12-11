@@ -120,6 +120,7 @@ export default class App extends React.Component {
           fishes={this.state.fishes}
           updateFish={this.updateFish}
           deleteFish={this.deleteFish}
+          storeName={this.props.match.params.storeName}
         />
       </div>
     );
